@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.NEXT_PUBLIC_GOOGLE_SHEETS_ID,
-      range: 'Sheet1!A1:H100',
+      range: 'Workflow!A1:H100',
     });
 
     const rows = response.data.values || [];
