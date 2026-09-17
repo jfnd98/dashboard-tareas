@@ -149,4 +149,49 @@ export default function Dashboard() {
         )}
 
         <div className="bg-slate-700 rounded-lg p-6">
-          <h2 className="text-white font-bold text-lg mb-4">📋 Todas las
+          <h2 className="text-white font-bold text-lg mb-4">📋 Todas las Tareas</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm text-left">
+              <thead className="bg-slate-600">
+                <tr>
+                  <th className="px-4 py-2 text-white">Tarea</th>
+                  <th className="px-4 py-2 text-white">Proyecto</th>
+                  <th className="px-4 py-2 text-white">Prioridad</th>
+                  <th className="px-4 py-2 text-white">Deadline</th>
+                  <th className="px-4 py-2 text-white">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tasks.map((task, i) => (
+                  <tr key={i} className="border-b border-slate-600 hover:bg-slate-600">
+                    <td className="px-4 py-2 text-slate-200">{task['Tarea']}</td>
+                    <td className="px-4 py-2 text-slate-300">{task['Proyecto']}</td>
+                    <td className="px-4 py-2">
+                      <span className={`px-2 py-1 rounded text-xs font-semibold ${task['Prioridad'] === '1' ? 'bg-red-600' : task['Prioridad'] === '2' ? 'bg-yellow-600' : 'bg-green-600'} text-white`}>
+                        Prio {task['Prioridad']}
+                      </span>
+                    </td>
+                    <td className="px-4 py-2 text-slate-300">{task['Deadline']}</td>
+                    <td className="px-4 py-2">
+                      <span className={`px-2 py-1 rounded text-xs font-semibold ${task['Status'] === 'Completado' ? 'bg-green-600' : task['Status'] === 'En proceso' ? 'bg-blue-600' : 'bg-gray-600'} text-white`}>
+                        {task['Status']}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+      `}</style>
+    </div>
+  );
+}
